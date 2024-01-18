@@ -1,8 +1,43 @@
+/* body {
+  background-color: black;
+} */
+
+.episode-list-item {
+  list-style-type: none;
+  color: blue;
+}
+
+.episode-list {
+  text-decoration: none;
+  
+}
+
+
 .aside {
   border: 1px solid black;
-  width: 30rem;
+  width: 20rem;
 }
 
 .header {
   border: 1px solid black;
+  width: 100%vh;
+  background-color: black;
 }
+
+.title1 {
+  text-align: center;
+
+  color: #08bae3;
+  -webkit-text-stroke: 0.1px #fff765;
+  text-shadow: 5px 5px 5px black
+  border: 20px;
+  z-index: 50;
+  font-family: "Get Schwifty";
+  @font-face {
+    font-family: "Get Schwifty";
+    src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff")
+      format("woff");
+  }
+}
+
+
