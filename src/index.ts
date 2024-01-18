@@ -3,7 +3,7 @@ const urlEpisodes = "https://rickandmortyapi.com/api/episode";
 const urlCharacters = "https://rickandmortyapi.com/api/character";
 const urlLocations = "https://rickandmortyapi.com/api/location";
 
-async function getEpisodes() {
+async function getEpisodes(): Promise<InfoAPI> {
   try {
     const apiEpisode = await fetch(urlEpisodes);
     const data: InfoAPI = await apiEpisode.json();
@@ -16,13 +16,13 @@ async function getEpisodes() {
       ) as HTMLUListElement;
       const liEpisode = document.createElement("li");
       liEpisode.classList.add("episode-list-item");
-      liEpisode.textContent = `Episode ${episode.id}`;
+      liEpisode.textContent = episode.name;
       container.appendChild(liEpisode);
     });
 
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error("Fail");
   }
 }
 
@@ -30,9 +30,36 @@ getEpisodes().then((dataResult) => {
   getNextEpisodes(dataResult);
 });
 
-async function getNextEpisodes(dataResults: InfoAPI | undefined) {
+function getNextEpisodes(dataResults: InfoAPI): void {
   const loadMoreBtn = document.getElementById("load-more") as HTMLButtonElement;
-  loadMoreBtn.addEventListener("click", () => {
-    const loadNextPage = await fetch(dataResults?.info.next);
+  let checkEvent: boolean = true;
+  loadMoreBtn.addEventListener("click", async () => {
+    if (checkEvent) {
+      checkEvent = false;
+      displayMoreEpisodes(dataResults);
+    }
   });
+}
+
+async function displayMoreEpisodes(dataResults: InfoAPI) {
+  try {
+    if (dataResults.info.next) {
+      const response = await fetch(dataResults.info.next);
+      const data: InfoAPI = await response.json();
+      const episodes: Episode[] = data.results;
+
+      episodes.forEach((episode) => {
+        const container = document.getElementById(
+          "episode-list"
+        ) as HTMLUListElement;
+        const liEpisode = document.createElement("li");
+        liEpisode.classList.add("episode-list-item");
+        liEpisode.textContent = episode.name;
+        container.appendChild(liEpisode);
+      });
+      return data;
+    }
+  } catch (error) {
+    throw new Error("Fail");
+  }
 }

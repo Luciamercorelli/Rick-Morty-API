@@ -21,13 +21,13 @@ function getEpisodes() {
                 const container = document.getElementById("episode-list");
                 const liEpisode = document.createElement("li");
                 liEpisode.classList.add("episode-list-item");
-                liEpisode.textContent = `Episode ${episode.id}`;
+                liEpisode.textContent = episode.name;
                 container.appendChild(liEpisode);
             });
             return data;
         }
         catch (error) {
-            console.log(error);
+            throw new Error("Fail");
         }
     });
 }
@@ -36,7 +36,34 @@ getEpisodes().then((dataResult) => {
 });
 function getNextEpisodes(dataResults) {
     const loadMoreBtn = document.getElementById("load-more");
-    loadMoreBtn.addEventListener("click", () => { });
-    console.log(dataResults);
+    let checkEvent = true;
+    loadMoreBtn.addEventListener("click", () => __awaiter(this, void 0, void 0, function* () {
+        if (checkEvent) {
+            checkEvent = false;
+            displayMoreEpisodes(dataResults);
+        }
+    }));
+}
+function displayMoreEpisodes(dataResults) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            if (dataResults.info.next) {
+                const response = yield fetch(dataResults.info.next);
+                const data = yield response.json();
+                const episodes = data.results;
+                episodes.forEach((episode) => {
+                    const container = document.getElementById("episode-list");
+                    const liEpisode = document.createElement("li");
+                    liEpisode.classList.add("episode-list-item");
+                    liEpisode.textContent = episode.name;
+                    container.appendChild(liEpisode);
+                });
+                return data;
+            }
+        }
+        catch (error) {
+            throw new Error("Fail");
+        }
+    });
 }
 export {};
