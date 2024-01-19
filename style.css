@@ -1,10 +1,13 @@
 /* body {
   background-color: black;
-} */
+}  */
 
 .episode-list-item {
   list-style-type: none;
-  color: blue;
+  color: white;
+  border: 1px solid #fff765;
+  border-radius: 5px;
+  
 }
 
 .episode-list {
@@ -12,10 +15,15 @@
   
 }
 
+.main-container {
+  display: flex;
+}
 
 .aside {
   border: 1px solid black;
   width: 20rem;
+  overflow-y: scroll;
+  height: 20rem;
 }
 
 .header {
