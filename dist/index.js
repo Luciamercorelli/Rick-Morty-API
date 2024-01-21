@@ -19,7 +19,7 @@ function printTitle(url) {
         const JSONdata = yield data.json();
         const episodes = JSONdata.results;
         episodes.forEach((episodeElement) => {
-            episodesList.insertAdjacentHTML("beforeend", `<li id="episode${episodeElement.episode}" episodeUrl="${episodeElement.url}">${episodeElement.name}</li>`);
+            episodesList.insertAdjacentHTML("beforeend", `<li class="episode-titles" id="episode${episodeElement.episode}" episodeUrl="${episodeElement.url}">${episodeElement.name}</li>`);
             const clickEpisode = document.getElementById(`episode${episodeElement.episode}`);
             clickEpisode.addEventListener("click", displayElementInfo);
         });
@@ -40,20 +40,26 @@ function displayElementInfo(click) {
         const urlEpisode = target.getAttribute("episodeUrl");
         const data = yield fetch(urlEpisode);
         const episodeInfo = yield data.json();
-        const displayEpisodeInfo = `<p>${episodeInfo.name}</p>
-  <p>${episodeInfo.air_date}</p>
-  <p>${episodeInfo.episode}</p>`;
+        const displayEpisodeInfo = `<div class="episode-info-box">
+  <p class="episode-info">${episodeInfo.name}</p>
+  <p class="episode-info">${episodeInfo.air_date}</p>
+  <p class="episode-info">${episodeInfo.episode}</p>
+  </div>`;
         const printEpisodeInfo = document.getElementById("content-area");
         printEpisodeInfo.innerHTML = displayEpisodeInfo;
         const characters = episodeInfo.characters;
         characters.forEach((urlCharacters) => __awaiter(this, void 0, void 0, function* () {
             const data = yield fetch(urlCharacters);
             const characterInfo = yield data.json();
-            const displayCharacterInfo = `<p>${characterInfo.name}</p>
-  <p>${characterInfo.status}</p>
-  <p>${characterInfo.species}</p>
-  <p>${characterInfo.gender}</p>
-  <img src=${characterInfo.image}>`;
+            const displayCharacterInfo = `<div class="character-images-box">
+  <div class="character-card">
+  <p class="character-info">Name: ${characterInfo.name}</p>
+  <p class="character-info">Status: ${characterInfo.status}</p>
+  <p class="character-info">Species: ${characterInfo.species}</p>
+  <p class="character-info">Gender: ${characterInfo.gender}</p>
+  <img class="character-image" src=${characterInfo.image}>
+  </div>
+  </div>`;
             printEpisodeInfo.insertAdjacentHTML("beforeend", displayCharacterInfo);
         }));
     });

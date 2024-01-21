@@ -18,7 +18,7 @@ async function printTitle(url: string) {
   episodes.forEach((episodeElement) => {
     episodesList.insertAdjacentHTML(
       "beforeend",
-      `<li id="episode${episodeElement.episode}" episodeUrl="${episodeElement.url}">${episodeElement.name}</li>`
+      `<li class="episode-titles" id="episode${episodeElement.episode}" episodeUrl="${episodeElement.url}">${episodeElement.name}</li>`
     );
     const clickEpisode = document.getElementById(
       `episode${episodeElement.episode}`
@@ -46,9 +46,11 @@ async function displayElementInfo(click:MouseEvent) {
   const data = await fetch(urlEpisode);
   const episodeInfo: Episode = await data.json();
   const displayEpisodeInfo = 
-  `<p>${episodeInfo.name}</p>
-  <p>${episodeInfo.air_date}</p>
-  <p>${episodeInfo.episode}</p>`;
+  `<div class="episode-info-box">
+  <p class="episode-info">${episodeInfo.name}</p>
+  <p class="episode-info">${episodeInfo.air_date}</p>
+  <p class="episode-info">${episodeInfo.episode}</p>
+  </div>`;
   
   const printEpisodeInfo = document.getElementById("content-area") as HTMLDivElement;  
   printEpisodeInfo.innerHTML =displayEpisodeInfo;  
@@ -57,11 +59,15 @@ async function displayElementInfo(click:MouseEvent) {
   const data = await fetch(urlCharacters);  
   const characterInfo: Character = await data.json(); 
     const displayCharacterInfo = 
-  `<p>${characterInfo.name}</p>
-  <p>${characterInfo.status}</p>
-  <p>${characterInfo.species}</p>
-  <p>${characterInfo.gender}</p>
-  <img src=${characterInfo.image}>`;
+  `<div class="character-images-box">
+  <div class="character-card">
+  <p class="character-info">Name: ${characterInfo.name}</p>
+  <p class="character-info">Status: ${characterInfo.status}</p>
+  <p class="character-info">Species: ${characterInfo.species}</p>
+  <p class="character-info">Gender: ${characterInfo.gender}</p>
+  <img class="character-image" src=${characterInfo.image}>
+  </div>
+  </div>`;
   printEpisodeInfo.insertAdjacentHTML("beforeend",displayCharacterInfo);
   });
 }

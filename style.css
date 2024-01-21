@@ -1,10 +1,62 @@
-/* body {
+* {
+margin: 0;
+padding: 0;
+}
+
+body {
   background-color: black;
-}  */
+}  
+
+.load-more {
+  width: 5rem;
+  margin-left: 7rem;
+  background-color: #fff765;
+  border-radius: 45px;
+  box-shadow:0px 8px 15px rgba(0, 0, 0, 0.1) ;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background-color: #08bae3;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.episode-titles {
+  color: black;
+  list-style: none;
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.8rem;
+  list-style-position:inside;
+  border: 1px solid #fff765;
+  border-radius: 7px;
+  padding-left: 7px;
+  background-color: #08bae3;
+}
+
+  li:hover {
+    background-color: #fff765;
+    
+  }
+
+.episode-info {
+  color: #08bae3;
+  font-family: 'Heebo', sans-serif;
+  font-size: 1rem; 
+}
+
+.character-info {
+  color: #fff765;
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.7rem;
+}
 
 .episode-list-item {
   list-style-type: none;
-  color: white;
+  color: red
   border: 1px solid #fff765;
   border-radius: 5px;
   
@@ -21,10 +73,17 @@
 
 .aside {
   border: 1px solid black;
-  width: 20rem;
+  width: 19.5rem;
   overflow-y: scroll;
   height: 20rem;
+  display: flex;
+  flex-direction: column;
 }
+
+/* ::-webkit-scrollbar {
+  color: #08bae3;
+  width: 10px;
+} */
 
 .header {
   border: 1px solid black;
@@ -34,11 +93,10 @@
 
 .title1 {
   text-align: center;
-
-  color: #08bae3;
+  color: #08bae3;  
   -webkit-text-stroke: 0.1px #fff765;
-  text-shadow: 5px 5px 5px black
   border: 20px;
+  font-size: 3rem;
   z-index: 50;
   font-family: "Get Schwifty";
   @font-face {
@@ -48,4 +106,48 @@
   }
 }
 
+.morty {
+  height: 7rem;
+  width: 7rem;
+}
 
+.rick {
+  height: 7rem;
+  width: 7rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.content-area {
+  padding-left: 2rem;
+  display: flex;
+  flex-flow: row wrap;
+ 
+  width: 70%;
+  gap: 0.5rem;
+}
+
+
+.character-image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.character-images-box {
+ 
+ 
+}
+
+.episode-info-box {
+  width: 100%;
+  
+  
+}
+
+.character-card {
+  width: 8rem;
+  height: 14rem;
+}
