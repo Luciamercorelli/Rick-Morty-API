@@ -7,6 +7,56 @@ body {
   background-color: black;
 }  
 
+/* HEADER */
+
+.header {
+  width: 100%vh;
+  background-color: black;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.title1 {
+  text-align: center;
+  color: #08bae3;  
+  -webkit-text-stroke: 0.1px #fff765;
+  border: 20px;
+  font-size: 3rem;
+  z-index: 50;
+  font-family: "Get Schwifty";
+  @font-face {
+    font-family: "Get Schwifty";
+    src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff")
+      format("woff");
+  }
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.morty {
+  height: 7rem;
+  width: 7rem;
+}
+
+.rick {
+  height: 7rem;
+  width: 7rem;
+}
+
+/* MAIN: ASIDE - UL - BUTTON */
+
+.aside {
+  width: 30%;
+  overflow-y: scroll;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  padding-left: 4rem;
+}
+
 .load-more {
   width: 5rem;
   margin-left: 7rem;
@@ -42,11 +92,19 @@ button:hover {
     
   }
 
+.episode-list {
+  text-decoration: none;  
+}
+
+/* MAIN: SECTION (EPISODES) */
+
 .episode-info {
   color: #08bae3;
   font-family: 'Heebo', sans-serif;
   font-size: 1rem; 
 }
+
+/* MAIN: SECTION (CHARACTERS) */
 
 .character-info {
   color: #fff765;
@@ -54,41 +112,54 @@ button:hover {
   font-size: 0.7rem;
 }
 
-.episode-list-item {
-  list-style-type: none;
-  color: red
-  border: 1px solid #fff765;
-  border-radius: 5px;
-  
-}
-
-.episode-list {
-  text-decoration: none;
-  
-}
+/* MAIN: SECTION (EPISODES AND CHARACTERS ORIGINATED IN index.ts) */
 
 .main-container {
   display: flex;
 }
 
-.aside {
-  border: 1px solid black;
-  width: 19.5rem;
-  overflow-y: scroll;
-  height: 20rem;
+.content-area {
+  padding-left: 2rem;
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap; 
+  width: 70%;
+  gap: 0.5rem;
 }
 
-/* ::-webkit-scrollbar {
-  color: #08bae3;
-  width: 10px;
-} */
+.episode-info-box {
+  width: 100%;
+ }
 
-.header {
-  border: 1px solid black;
+.character-card {
+  width: 8rem;
+  height: 14rem;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.character-card:hover {
+  width: 9rem;
+  height: 15rem;
+  padding: 0.5rem;
+}
+
+.character-image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 480px) {
+
+/* HEADER */
+
+ .header {
   width: 100%vh;
   background-color: black;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .title1 {
@@ -96,7 +167,7 @@ button:hover {
   color: #08bae3;  
   -webkit-text-stroke: 0.1px #fff765;
   border: 20px;
-  font-size: 3rem;
+  font-size: 1.5rem;
   z-index: 50;
   font-family: "Get Schwifty";
   @font-face {
@@ -107,47 +178,46 @@ button:hover {
 }
 
 .morty {
-  height: 7rem;
-  width: 7rem;
+  height: 5rem;
+  width: 5rem;
 }
 
 .rick {
-  height: 7rem;
-  width: 7rem;
+  height: 5rem;
+  width: 5rem;
 }
 
-.header-container {
+/* MAIN */
+
+.main-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.aside {
+  width: 100%;
+  overflow-y: scroll;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+}
+
+.episode-titles {
+    border-radius: 0;  
 }
 
 .content-area {
-  padding-left: 2rem;
+  padding-left: 0;
   display: flex;
-  flex-flow: row wrap;
- 
-  width: 70%;
+  flex-flow: row wrap; 
+  width: 100%;
   gap: 0.5rem;
+  justify-content: space-around;
 }
 
-
-.character-image {
-  width: 100%;
-  border-radius: 10px;
+.episode-info {
+  text-align: center;
 }
-
-.character-images-box {
- 
- 
-}
-
-.episode-info-box {
-  width: 100%;
   
-  
-}
-
-.character-card {
-  width: 8rem;
-  height: 14rem;
 }

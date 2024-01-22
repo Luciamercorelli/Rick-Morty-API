@@ -42,13 +42,13 @@ export interface Location {
     url:  string;
 }
 
-enum CharacterStatus {
+export enum CharacterStatus {
     Alive = "Alive",
     Dead = "Dead",
     Unknow = "Unknown",
 }
 
-enum CharacterGender {
+export enum CharacterGender {
     Male = "Male",
     Female = "Female",
     Unknown = "Unknown",

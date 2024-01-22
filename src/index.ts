@@ -1,14 +1,14 @@
 import { InfoAPI, Episode, Character } from './interface';
+
 const urlEpisodes = "https://rickandmortyapi.com/api/episode";
 const urlCharacters = "https://rickandmortyapi.com/api/character";
 const urlLocations = "https://rickandmortyapi.com/api/location";
-
-const episodesList = document.getElementById(
-  "episode-list"
-) as HTMLUListElement;
+const episodesList = document.getElementById("episode-list") as HTMLUListElement;
 const nextBtn = document.getElementById("load-more") as HTMLButtonElement;
 
 printTitle(urlEpisodes);
+
+// PRINT EPISODES LIST FUNCTION //
 
 async function printTitle(url: string) {
   const data = await fetch(url);
@@ -16,13 +16,9 @@ async function printTitle(url: string) {
   const episodes: Episode[] = JSONdata.results;
 
   episodes.forEach((episodeElement) => {
-    episodesList.insertAdjacentHTML(
-      "beforeend",
-      `<li class="episode-titles" id="episode${episodeElement.episode}" episodeUrl="${episodeElement.url}">${episodeElement.name}</li>`
-    );
-    const clickEpisode = document.getElementById(
-      `episode${episodeElement.episode}`
-    ) as HTMLLIElement;
+    episodesList.insertAdjacentHTML("beforeend",
+      `<li class="episode-titles" id="episode${episodeElement.episode}" episodeUrl="${episodeElement.url}">${episodeElement.name}</li>`);
+    const clickEpisode = document.getElementById(`episode${episodeElement.episode}`) as HTMLLIElement;
     clickEpisode.addEventListener("click", displayElementInfo);
   });
 
@@ -38,8 +34,8 @@ async function printTitle(url: string) {
   }
 }
 
+// DISPLAY EPISODES AND CHARACTERS INFO FUCTION //
 
-//CLICK DISPLAY EPISODIO
 async function displayElementInfo(click:MouseEvent) {
   const target = click.target as HTMLLIElement;
   const urlEpisode = target.getAttribute("episodeUrl")!;
@@ -47,8 +43,8 @@ async function displayElementInfo(click:MouseEvent) {
   const episodeInfo: Episode = await data.json();
   const displayEpisodeInfo = 
   `<div class="episode-info-box">
-  <p class="episode-info">${episodeInfo.name}</p>
-  <p class="episode-info">${episodeInfo.air_date}</p>
+  <p class="episode-info">Title: "${episodeInfo.name}"</p>
+  <p class="episode-info">Air date: ${episodeInfo.air_date}</p>
   <p class="episode-info">${episodeInfo.episode}</p>
   </div>`;
   
@@ -72,83 +68,3 @@ async function displayElementInfo(click:MouseEvent) {
   });
 }
 
-
-
-
-
-
-
-
-
-
-/* import { InfoAPI, Episode } from "./interface";
-const urlEpisodes = "https://rickandmortyapi.com/api/episode";
-const urlCharacters = "https://rickandmortyapi.com/api/character";
-const urlLocations = "https://rickandmortyapi.com/api/location";
-
-async function getEpisodes(): Promise<InfoAPI> {
-  try {
-    const apiEpisode = await fetch(urlEpisodes);
-    const data: InfoAPI = await apiEpisode.json();
-    const episodes: Episode[] = data.results;
-
-    episodes.forEach((episode) => {
-      console.log(episode);
-      const container = document.getElementById(
-        "episode-list"
-      ) as HTMLUListElement;
-      const liEpisode = document.createElement("li");
-      liEpisode.classList.add("episode-list-item");
-      liEpisode.textContent = episode.name;
-      container.appendChild(liEpisode);
-    });
-
-    return data;
-  } catch (error) {
-    throw new Error("Fail");
-  }
-}
-
-getEpisodes().then((dataResult) => {
-  getNextEpisodes(dataResult);
-});
-.then((dataResults) => {
-
-})
-
-function getNextEpisodes(dataResults: InfoAPI): void {
-  const loadMoreBtn = document.getElementById("load-more") as HTMLButtonElement;
-  let checkEvent: boolean = true;
-  loadMoreBtn.addEventListener("click", async () => {
-    if (checkEvent) {
-      checkEvent = false;
-      return displayMoreEpisodes(dataResults);
-    }
-  });
-}
-
-async function displayMoreEpisodes (dataResults: InfoAPI):Promise<InfoAPI> {
-  try {
-   
-      const response = await fetch(dataResults.info.next);
-      const data: InfoAPI = await response.json();
-      const episodes: Episode[] = data.results;
-
-
-      episodes.forEach((episode) => {
-        const container = document.getElementById(
-          "episode-list"
-        ) as HTMLUListElement;
-        const liEpisode = document.createElement("li");
-        liEpisode.classList.add("episode-list-item");
-        liEpisode.textContent = episode.name;
-        container.appendChild(liEpisode);
-      });
-      return data;
-    }
-
-
-  } catch (error) {
-    throw new Error("Fail");
-  }
-} */
