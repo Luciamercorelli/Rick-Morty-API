@@ -1,7 +1,7 @@
 STEP BY STEP PROJECT ORGANIZATION:
 1. Decide the design and all fonts, colors, ecc…
 2. Make a list of all the mandatory requirements
-3. Create the document where I’ve tracked questions, issues and lesson learned
+3. Create the document where I’ve tracked questions, issues and lesson learned (Notion)
 4. Create the project on GitHub
 5. Create the project in VS Code using Typescript
 6. Create the HTML
