@@ -2,13 +2,26 @@ STEP BY STEP PROJECT ORGANIZATION:
 1. Decide the design and all fonts, colors, ecc…
 2. Make a list of all the mandatory requirements
 3. Create the document where I’ve tracked questions, issues and lesson learned (Notion)
-4. Create the project on GitHub
+4. Create the project on GitHub (including documentation)
 5. Create the project in VS Code using Typescript
 6. Create the HTML
-7. Create the Typescript/Javascript logic
+7. Create the Typescript/Javascript logic (interfaces, variables, functions)
 8. Style the project with CSS
 9. Create the presentation
 10. Record the video
+
+HOW THE RICK AND MORTY API WORKS:
+- On the left side there is the list of the episodes from all seasons, there is a scroll bar that can be used to scroll to the bottom of the list
+- If the scroll bar reaches the bottom of the list a "Load more" button will appear and can be clicked to upload more episodes
+- Once all the episodes are uploaded the button will disappear
+- By clicking on each episode the following information will be displayed:
+  episode info
+  All the characters that appears in the episode
+  Character info
+- The episode info contains the following information:
+    Title, air date, episode reference (season number + episode number)
+- The character info contains the following information:
+    Name, status, species, gender
 
 Mandatory requirements (all done):
 - Use Type/Interfaces
