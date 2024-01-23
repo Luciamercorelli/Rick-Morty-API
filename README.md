@@ -15,13 +15,18 @@ HOW THE RICK AND MORTY API WORKS:
 - If the scroll bar reaches the bottom of the list a "Load more" button will appear and can be clicked to upload more episodes
 - Once all the episodes are uploaded the button will disappear
 - By clicking on each episode the following information will be displayed:
-  episode info
-  All the characters that appears in the episode
-  Character info
+1.episode info
+2.All the characters that appears in the episode
+3.Character info
 - The episode info contains the following information:
-    Title, air date, episode reference (season number + episode number)
+1.Title
+2.air date
+3.episode reference (season number + episode number)
 - The character info contains the following information:
-    Name, status, species, gender
+1.Name
+2.status
+3.species
+4.gender
 
 Mandatory requirements (all done):
 - Use Type/Interfaces
